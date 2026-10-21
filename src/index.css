@@ -1,0 +1,243 @@
+/* ==========================================================================
+   SAFE STREETS — GLOBAL DESIGN SYSTEM & STYLESHEET
+   Aesthetics: Vizcom-inspired Dark Luxury, Electric Violet, Studio Precision
+   ========================================================================== */
+
+:root {
+  /* Surface & Background Hierarchy */
+  --bg-deep: #06030c;
+  --bg-surface: #0d0818;
+  --bg-elevated: #150f26;
+  --bg-card: rgba(21, 15, 38, 0.7);
+  --bg-card-border: rgba(167, 139, 250, 0.18);
+  --bg-glass: rgba(13, 8, 24, 0.75);
+
+  /* Typography Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-faint: #475569;
+
+  /* Brand Accents */
+  --violet-primary: #8b5cf6;
+  --violet-bright: #a78bfa;
+  --violet-light: #c4b5fd;
+  --violet-glow: rgba(139, 92, 246, 0.35);
+  --violet-glow-subtle: rgba(139, 92, 246, 0.15);
+
+  /* Functional Safety Accents */
+  --emerald-safe: #10b981;
+  --emerald-glow: rgba(16, 185, 129, 0.35);
+  --amber-warning: #f59e0b;
+  --crimson-sos: #ef4444;
+  --crimson-glow: rgba(239, 68, 68, 0.4);
+
+  /* Typography Families */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* Layout & Viewport */
+  --nav-height: 72px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: auto; /* Handled smoothly by Lenis */
+}
+
+/* Lenis smooth scrolling rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Selection Color */
+::selection {
+  background: rgba(139, 92, 246, 0.8);
+  color: #ffffff;
+}
+
+/* Typography Utilities */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+/* Glassmorphism Surface Classes */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--bg-card-border);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+}
+
+/* Subtle Violet Rim Lights & Atmosphere */
+.violet-rim-glow {
+  box-shadow: 0 0 50px -10px var(--violet-glow),
+              inset 0 0 20px -5px var(--violet-glow-subtle);
+}
+
+.emerald-rim-glow {
+  box-shadow: 0 0 30px -5px var(--emerald-glow);
+}
+
+/* Accessibility: Skip Link & Focus Rings */
+.skip-link {
+  position: absolute;
+  top: -120px;
+  left: 20px;
+  background: #8b5cf6;
+  color: #ffffff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 9999px;
+  z-index: 1000;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+  transition: top 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skip-link:focus {
+  top: 16px;
+  outline: 2px solid #ffffff;
+}
+
+button:focus-visible, a:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 3px;
+}
+
+/* Custom Interactive Button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px -2px rgba(139, 92, 246, 0.4);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px 0 rgba(139, 92, 246, 0.6);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080511;
+}
+::-webkit-scrollbar-thumb {
+  background: #251d3d;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4a3b78;
+}
+
+/* Reduced Motion Mode */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
